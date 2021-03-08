@@ -22,6 +22,7 @@ WORKDIR /home/project
 # Copy source code.
 COPY app/ ./app
 COPY package.json yarn.lock config.js knexfile.js .babelrc ./
+COPY Makefile entrypoint.sh ./
 
 # Set file permissions.
 RUN chown -R project:project .
@@ -38,4 +39,4 @@ RUN yarn install
 EXPOSE 3000
 
 # Set start-up command.
-CMD ["yarn", "start"]
+CMD ["./entrypoint.sh"]
